@@ -44,11 +44,8 @@ const pool = mysql.createPool({
 
 app.get("/api/vehicles", async (req, res) => {
   try {
-    const [rows] = await pool.query(
-      `SELECT *
-       FROM vehicles
-       WHERE available = 1
-       ORDER BY id DESC`
+        const [rows] = await pool.query(
+      "SELECT * FROM vehicles WHERE available = 1 ORDER BY id DESC"
     );
 
     res.json(rows);
