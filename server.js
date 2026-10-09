@@ -24,8 +24,8 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME || "vehicle_rental_db",
 
   ssl: process.env.DB_HOST
-    ? { rejectUnauthorized: true }
-    : undefined,
+  ? { rejectUnauthorized: false }
+  : undefined,
 
   waitForConnections: true,
   connectionLimit: 10
