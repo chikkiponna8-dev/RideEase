@@ -1,4 +1,4 @@
-```javascript
+
 require("dotenv").config();
 
 const express = require("express");
@@ -8,18 +8,13 @@ const mysql = require("mysql2/promise");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-/* =========================================================
-   MIDDLEWARE
-   ========================================================= */
+/* MIDDLEWARE */
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static(path.join(__dirname, "public")));
 
-/* =========================================================
-   MYSQL DATABASE
-   ========================================================= */
+/* MYSQL DATABASE */
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST || "localhost",
@@ -28,8 +23,6 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD || "",
   database: process.env.DB_NAME || "vehicle_rental_db",
 
-  // Aiven requires an encrypted SSL connection.
-  // Keep certificate verification enabled.
   ssl: process.env.DB_HOST
     ? { rejectUnauthorized: true }
     : undefined,
@@ -38,29 +31,24 @@ const pool = mysql.createPool({
   connectionLimit: 10
 });
 
-/* =========================================================
-   GET VEHICLES
-   ========================================================= */
+/* GET VEHICLES */
 
 app.get("/api/vehicles", async (req, res) => {
   try {
-        const [rows] = await pool.query(
+    const [rows] = await pool.query(
       "SELECT * FROM vehicles WHERE available = 1 ORDER BY id DESC"
     );
 
     res.json(rows);
   } catch (err) {
     console.error("Get vehicles error:", err.message);
-
     res.status(500).json({
       error: "Unable to load vehicles. Check MySQL setup."
     });
   }
 });
 
-/* =========================================================
-   CREATE BOOKING
-   ========================================================= */
+/* CREATE BOOKING */
 
 app.post("/api/bookings", async (req, res) => {
   const {
@@ -157,16 +145,13 @@ app.post("/api/bookings", async (req, res) => {
     });
   } catch (err) {
     console.error("Create booking error:", err.message);
-
     res.status(500).json({
       error: "Booking failed. Check your database connection."
     });
   }
 });
 
-/* =========================================================
-   GET BOOKING HISTORY
-   ========================================================= */
+/* GET BOOKING HISTORY */
 
 app.get("/api/bookings", async (req, res) => {
   try {
@@ -191,16 +176,13 @@ app.get("/api/bookings", async (req, res) => {
     res.json(rows);
   } catch (err) {
     console.error("Booking history error:", err.message);
-
     res.status(500).json({
       error: "Unable to load bookings."
     });
   }
 });
 
-/* =========================================================
-   HEALTH CHECK
-   ========================================================= */
+/* HEALTH CHECK */
 
 app.get("/api/health", async (req, res) => {
   try {
@@ -212,7 +194,6 @@ app.get("/api/health", async (req, res) => {
     });
   } catch (err) {
     console.error("Health check error:", err.message);
-
     res.status(500).json({
       server: "online",
       database: "disconnected"
@@ -220,19 +201,16 @@ app.get("/api/health", async (req, res) => {
   }
 });
 
-/* =========================================================
-   MAIN PAGE
-   ========================================================= */
+/* MAIN PAGE */
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(
+    path.join(__dirname, "public", "index.html")
+  );
 });
 
-/* =========================================================
-   START SERVER
-   ========================================================= */
+/* START SERVER */
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`RideEase server listening on port ${PORT}`);
 });
-```
