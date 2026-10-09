@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RideEase | Vehicle Rental System</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+
+<body>
+
+  <!-- =====================================================
+       NAVIGATION
+       ===================================================== -->
+
+  <header class="navbar">
+
+    <div class="logo">
+      Ride<span>Ease</span>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#vehicles">Vehicles</a>
+      <a href="#booking">Book Now</a>
+      <a href="#history">Booking History</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <a
+      class="nav-btn"
+      href="#booking">
+      Rent a Vehicle
+    </a>
+
+  </header>
+
+
+  <main>
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section
+      id="home"
+      class="hero">
+
+      <div class="hero-content">
+
+        <p class="eyebrow">
+          SMART • SIMPLE • FAST
+        </p>
+
+        <h1>
+          Move freely.<br>
+          <span>Rent easily.</span>
+        </h1>
+
+        <p class="hero-text">
+          Choose a vehicle, select your dates,
+          and book your ride in minutes.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            class="primary-btn"
+            href="#vehicles">
+            Explore Vehicles
+          </a>
+
+          <a
+            class="secondary-btn"
+            href="#booking">
+            Book Now
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-card">
+
+        <div class="mini-label">
+          POPULAR TODAY
+        </div>
+
+        <h3>
+          Premium SUV
+        </h3>
+
+        <p>
+          Comfortable rides for family trips
+          and long journeys.
+        </p>
+
+        <a href="#vehicles">
+          View fleet →
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STATISTICS
+         ===================================================== -->
+
+    <section class="stats">
+
+      <div>
+        <strong>25+</strong>
+        <span>Vehicles</span>
+      </div>
+
+      <div>
+        <strong>500+</strong>
+        <span>Bookings</span>
+      </div>
+
+      <div>
+        <strong>24/7</strong>
+        <span>Support</span>
+      </div>
+
+      <div>
+        <strong>100%</strong>
+        <span>Easy Booking</span>
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VEHICLES
+         ===================================================== -->
+
+    <section
+      id="vehicles"
+      class="section">
+
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            OUR FLEET
+          </p>
+
+          <h2>
+            Find your perfect ride
+          </h2>
+
+        </div>
+
+
+        <select id="filterType">
+
+          <option value="all">
+            All vehicles
+          </option>
+
+          <option value="Hatchback">
+            Hatchback
+          </option>
+
+          <option value="Sedan">
+            Sedan
+          </option>
+
+          <option value="SUV">
+            SUV
+          </option>
+
+          <option value="MUV">
+            MUV
+          </option>
+
+          <option value="Bike">
+            Bike
+          </option>
+
+          <option value="Scooter">
+            Scooter
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div
+        id="vehicleGrid"
+        class="vehicle-grid">
+
+        <div class="loading">
+          Loading vehicles...
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BOOKING
+         ===================================================== -->
+
+    <section
+      id="booking"
+      class="booking-section">
+
+
+      <div class="booking-intro">
+
+        <p class="eyebrow">
+          ONLINE RESERVATION
+        </p>
+
+        <h2>
+          Book your vehicle
+        </h2>
+
+        <p>
+          Enter your details and choose your
+          preferred vehicle and rental dates.
+        </p>
+
+
+        <div class="booking-points">
+
+          <p>
+            ✓ Transparent daily pricing
+          </p>
+
+          <p>
+            ✓ Quick confirmation
+          </p>
+
+          <p>
+            ✓ Multiple vehicle categories
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <form
+        id="bookingForm"
+        class="booking-form">
+
+
+        <div class="form-row">
+
+          <label>
+            Full Name
+
+            <input
+              type="text"
+              name="customer_name"
+              required
+              placeholder="Enter your name">
+
+          </label>
+
+
+          <label>
+            Email
+
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="you@example.com">
+
+          </label>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <label>
+            Phone
+
+            <input
+              type="tel"
+              name="phone"
+              required
+              placeholder="10-digit mobile number">
+
+          </label>
+
+
+          <label>
+            Vehicle
+
+            <select
+              name="vehicle_id"
+              id="vehicleSelect"
+              required>
+
+              <option value="">
+                Select vehicle
+              </option>
+
+            </select>
+
+          </label>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <label>
+            Pickup Date
+
+            <input
+              type="date"
+              name="pickup_date"
+              id="pickupDate"
+              required>
+
+          </label>
+
+
+          <label>
+            Return Date
+
+            <input
+              type="date"
+              name="return_date"
+              id="returnDate"
+              required>
+
+          </label>
+
+        </div>
+
+
+        <button
+          class="primary-btn full"
+          type="submit">
+
+          Confirm Booking
+
+        </button>
+
+
+        <div
+          id="bookingMessage"
+          class="message">
+        </div>
+
+      </form>
+
+    </section>
+
+
+    <!-- =====================================================
+         BOOKING HISTORY
+         ===================================================== -->
+
+    <section
+      id="history"
+      class="section booking-history">
+
+
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            YOUR BOOKINGS
+          </p>
+
+          <h2>
+            Booking History
+          </h2>
+
+        </div>
+
+
+        <button
+          class="secondary-btn"
+          type="button"
+          onclick="loadBookingHistory()">
+
+          Refresh
+
+        </button>
+
+      </div>
+
+
+      <div id="bookingHistory">
+
+        <div class="loading">
+          Loading booking history...
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+         ===================================================== -->
+
+    <section
+      id="about"
+      class="section about">
+
+
+      <p class="eyebrow">
+        WHY RIDEEASE?
+      </p>
+
+      <h2>
+        Everything you need for a smooth rental
+      </h2>
+
+
+      <div class="features">
+
+
+        <article>
+
+          <div class="icon">
+            01
+          </div>
+
+          <h3>
+            Easy Search
+          </h3>
+
+          <p>
+            Browse available cars, bikes and
+            scooters from one place.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <div class="icon">
+            02
+          </div>
+
+          <h3>
+            Simple Booking
+          </h3>
+
+          <p>
+            Complete your reservation through
+            a clean online form.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <div class="icon">
+            03
+          </div>
+
+          <h3>
+            Secure Data
+          </h3>
+
+          <p>
+            Customer and booking information
+            is stored in MySQL.
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer>
+
+    <div class="logo">
+      Ride<span>Ease</span>
+    </div>
+
+    <p>
+      Vehicle Rental Management System • Node.js Project
+    </p>
+
+  </footer>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script src="/js/app.js"></script>
+
+</body>
+
+</html>
